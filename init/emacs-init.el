@@ -70,8 +70,8 @@
 
 (load-file (concat default-path-init "_dtd.el"))
 
-(load-file (concat default-path-init "_ror.el"))
 (load-file (concat default-path-init "_ruby.el"))
+(load-file (concat default-path-init "_ror.el"))
 
 (load-file (concat default-path-init "_blog.el"))
 
