@@ -1,0 +1,164 @@
+;; Object semantic.cache
+;; SEMANTICDB Tags save file
+(semanticdb-project-database "semantic.cache"
+  :file "semantic.cache"
+  :tables (list 
+   (semanticdb-table "inf-ruby.el"
+    :file "inf-ruby.el"
+    :pointmax 14355
+    :major-mode 'emacs-lisp-mode
+    :tokens '(("comint" include nil nil nil [3356 3373]) ("compile" include nil nil nil [3374 3392]) ("ruby-mode" include nil nil nil [3393 3413]) ("ruby-program-name" variable nil "irb --inf-ruby-mode" ((user-visible . t)) "*Program invoked by the run-ruby command" nil [3785 3878]) ("inferior-ruby-first-prompt-pattern" variable nil "^irb(.*)[0-9:]+0> *" nil "first prompt regex pattern of ruby interpreter." nil [3880 3997]) ("inferior-ruby-prompt-pattern" variable nil "^\\(irb(.*)[0-9:]+[>*\"'] *\\)+" nil "prompt regex pattern of ruby interpreter." nil [3999 4116]) ("inferior-ruby-mode-hook" variable nil nil ((user-visible . t)) "*Hook for customising inferior-ruby mode." nil [4142 4224]) ("inferior-ruby-mode-map" variable nil nil ((user-visible . t)) "*Mode map for inferior-ruby-mode" nil [4225 4297]) ("inferior-ruby-error-regexp-alist" variable nil (quote (("SyntaxError: compile error
+^\\([^(].*\\):\\([1-9][0-9]*\\):" 1 2) ("^	from \\([^(].*\\):\\([1-9][0-9]*\\)\\(:in `.*'\\)?$" 1 2))) ((const . t)) nil nil [4299 4488]) ("cond" code nil [4490 4852]) ("inf-ruby-keys" function nil nil nil "Set local key defs for inf-ruby in ruby-mode" nil [4854 5588]) ("ruby-buffer" variable nil nil nil "current ruby (actually irb) process buffer." nil [5590 5660]) ("inferior-ruby-mode" function nil nil ((user-visible . t)) "Major mode for interacting with an inferior ruby (irb) process.
+
+The following commands are available:
+\\{inferior-ruby-mode-map}
+
+A ruby process can be fired up with M-x run-ruby.
+
+Customisation: Entry to this mode runs the hooks on comint-mode-hook and
+inferior-ruby-mode-hook (in that order).
+
+You can send text to the inferior ruby process from other buffers containing
+Ruby source.
+    switch-to-ruby switches the current buffer to the ruby process buffer.
+    ruby-send-definition sends the current definition to the ruby process.
+    ruby-send-region sends the current region to the ruby process.
+
+    ruby-send-definition-and-go, ruby-send-region-and-go,
+        switch to the ruby process buffer after sending their text.
+For information on running multiple processes in multiple buffers, see
+documentation for variable ruby-buffer.
+
+Commands:
+Return after the end of the process' output sends the text from the 
+    end of process to point.
+Return before the end of the process' output copies the sexp ending at point
+    to the end of the process' output, and sends it.
+Delete converts tabs to spaces as it moves back.
+Tab indents for ruby; with argument, shifts rest
+    of expression rigidly with the current line.
+C-M-q does Tab on each line starting within following expression.
+Paragraphs are separated only by blank lines.  # start comments.
+If you accidentally suspend your process, use \\[comint-continue-subjob]
+to continue it." nil [5662 7847]) ("inferior-ruby-filter-regexp" variable nil "\\`\\s *\\S ?\\S ?\\s *\\'" ((user-visible . t)) "*Input matching this regexp are not saved on the history list.
+Defaults to a regexp ignoring all inputs of 0, 1, or 2 letters." nil [7849 8045]) ("ruby-input-filter" function nil ("str") nil "Don't save anything matching inferior-ruby-filter-regexp" nil [8047 8194]) ("remove-in-string" function nil ("str" "regexp") nil "Remove all matches in STR for REGEXP and returns the new string." nil [8250 8624]) ("ruby-get-old-input" function nil nil nil "Snarf the sexp ending at point" nil [8626 8892]) ("ruby-args-to-list" function nil ("string") nil (let ((where (string-match "[ 	]" string))) (cond ((null where) (list string)) ((not (= where 0)) (cons (substring string 0 where) (ruby-args-to-list (substring string (+ 1 where) (length string))))) (t (let ((pos (string-match "[^ 	]" string))) (if (null pos) nil (ruby-args-to-list (substring string pos (length string)))))))) nil [8894 9308]) ("run-ruby" function nil ("cmd") ((user-visible . t)) "Run an inferior Ruby process, input and output via buffer *ruby*.
+If there is a process already running in `*ruby*', switch to that buffer.
+With argument, allows you to edit the command line (default is value
+of `ruby-program-name').  Runs the hooks `inferior-ruby-mode-hook'
+(after the `comint-mode-hook' is run).
+(Type \\[describe-mode] in the process buffer for a list of commands.)" nil [9310 10123]) ("ruby-send-terminator" variable nil "--inf-ruby-%x-%d-%d-%d--" ((const . t)) "Template for irb here document terminator.
+Must not contain ruby meta characters." nil [10125 10269]) ("ruby-eval-separator" variable nil "" ((const . t)) nil nil [10271 10304]) ("ruby-send-region" function nil ("start" "end") ((user-visible . t)) "Send the current region to the inferior Ruby process." nil [10306 11195]) ("ruby-send-definition" function nil nil ((user-visible . t)) "Send the current definition to the inferior Ruby process." nil [11197 11444]) ("ruby-send-block" function nil nil ((user-visible . t)) "Send the current block to the inferior Ruby process." nil [11625 11880]) ("switch-to-ruby" function nil ("eob-p") ((user-visible . t)) "Switch to the ruby process buffer.
+With argument, positions cursor at end of buffer." nil [11882 12213]) ("ruby-send-region-and-go" function nil ("start" "end") ((user-visible . t)) "Send the current region to the inferior Ruby process.
+Then switch to the process buffer." nil [12215 12423]) ("ruby-send-definition-and-go" function nil nil ((user-visible . t)) "Send the current definition to the inferior Ruby. 
+Then switch to the process buffer." nil [12425 12615]) ("ruby-send-block-and-go" function nil nil ((user-visible . t)) "Send the current block to the inferior Ruby. 
+Then switch to the process buffer." nil [12617 12792]) ("ruby-source-modes" variable nil (quote (ruby-mode)) ((user-visible . t)) "*Used to determine if a buffer contains Ruby source code.
+If it's loaded into a buffer that is in one of these major modes, it's
+considered a ruby source file by ruby-load-file.
+Used by these commands to determine defaults." nil [12794 13061]) ("ruby-prev-l/c-dir/file" variable nil nil nil "Caches the last (directory . file) pair.
+Caches the last pair used in the last ruby-load-file command.
+Used for determining the default in the 
+next one." nil [13063 13256]) ("ruby-load-file" function nil ("file-name") ((user-visible . t)) "Load a Ruby file into the inferior Ruby process." nil [13258 13831]) ("ruby-proc" function nil nil nil "Returns the current ruby process. See variable ruby-buffer." nil [13833 14113]) ("inf-ruby-load-hook" variable nil nil nil "This hook is run when inf-ruby is loaded in.
+This is a good place to put keybindings." nil [14151 14272]) ("run-hooks" code nil [14275 14306]) ("inf-ruby" package nil nil nil [14308 14327]))
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "snippet.el"
+    :file "snippet.el"
+    :pointmax 26865
+    :major-mode 'emacs-lisp-mode
+    :tokens '(("cl" include nil nil nil [10050 10063]) ("defgroup" code nil [10065 10218]) ("snippet-bound-face" variable nil (quote bold) ((user-visible . t)) "*Face used for the body of the snippet." nil [10220 10332]) ("snippet-field-face" variable nil (quote highlight) ((user-visible . t)) "*Face used for the fields' default values." nil [10334 10454]) ("snippet-field-identifier" variable nil "$$" ((user-visible . t)) "*String used to identify field placeholders." nil [10456 10580]) ("snippet-exit-identifier" variable nil "$." ((user-visible . t)) "*String used to identify the exit point of the snippet." nil [10582 10716]) ("snippet-field-default-beg-char" variable nil 123 ((user-visible . t)) "*Character used to identify the start of a field's default value." nil [10718 10870]) ("snippet-field-default-end-char" variable nil 125 ((user-visible . t)) "*Character used to identify the stop of a field's default value." nil [10872 11023]) ("snippet-indent" variable nil "$>" ((user-visible . t)) "*String used to indicate that a line is to be indented." nil [11025 11153]) ("snippet-line-terminator" variable nil "
+" ((user-visible . t)) "*String used to indicate the end of line in a snippet template." nil [11155 11297]) ("snippet-map" variable nil (make-sparse-keymap) nil "Keymap used while the point is located within a snippet." nil [11299 11401]) ("define-key" code nil [11427 11495]) ("define-key" code nil [11496 11564]) ("define-key" code nil [11565 11633]) ("snippet" type "struct" ("\"Structure containing the overlays used to display a snippet.
+
+The BOUND slot contains an overlay to bound the entire text of the
+template.  This overlay is used to provide a different face
+configurable via `snippet-bound-face' as well as the keymap that
+enables tabbing between fields.
+
+The FIELDS slot contains a list of overlays used to indicate the
+position of each field.  In addition, if a field has a default, the
+field overlay is used to provide a different face configurable via
+`snippet-field-face'.
+
+The EXIT-MARKER slot contains a marker where point should be placed
+after the user has cycled through all available fields.\"" "bound" "fields" "exit-marker") nil nil fields nil [11635 12320]) ("snippet" variable nil nil nil "Snippet in the current buffer.
+There is no more than one snippet per buffer.  This variable is buffer
+local." nil [12322 12455]) ("make-variable-buffer-local" code nil [12457 12494]) ("snippet-make-bound-overlay" function nil nil nil "Create an overlay to bound a snippet.
+Add the appropriate properties for the overlay to provide: a face used
+to display the snippet, the keymap to use while within the snippet,
+and the modification hooks to clean up the overlay in the event it is
+deleted." nil [12496 13040]) ("snippet-make-field-overlay" function nil ("&optional" "name") nil "Create an overlay for a field in a snippet.  
+Add the appropriate properties for the overlay to provide: a face used
+to display a field's default value, and modification hooks to remove
+the default text if the user starts typing." nil [13042 13928]) ("snippet-fields-with-name" function nil ("name") nil "Return a list of fields whose name property is equal to NAME." nil [13930 14154]) ("snippet-bound-modified" function nil ("bound" "after" "beg" "end" "&optional" "change") nil "Ensure the overlay that bounds a snippet is cleaned up.
+This modification hook is triggered when the overlay that bounds the
+snippet is modified.  It runs after the change has been made and
+ensures that if the snippet has been deleted by the user, the
+appropriate cleanup occurs." nil [14156 14604]) ("snippet-field-insert" function nil ("field" "after" "beg" "end" "&optional" "change") nil "Delete the default field value.
+This insertion hook is triggered when a user starts to type when the
+point is positioned at the beginning of a field (this occurs when the
+user chooses to replace the field default).  In this case, the hook
+deletes the field default." nil [14606 15071]) ("snippet-field-modified" function nil ("field" "after" "beg" "end" "&optional" "change") nil "Shrink the field overlay.
+This modification hook is triggered when a user starts to type when
+the point is positioned in the middle or at the end of a field (this
+occurs when the user chooses to edit the field default).  It is used
+to ensure that the bound overlay always covers the entirety of all
+field overlays, if not, its extends the bound overlay appropriately." nil [15073 15698]) ("snippet-field-update" function nil ("field" "after" "beg" "end" "&optional" "change") nil "Update all fields that have the same name.
+This modificition hook is triggered when a user edits any field and is
+responsible for updating all other fields that share a common name." nil [15700 16477]) ("snippet-exit-snippet" function nil nil nil "Move point to `snippet-exit-identifier' or end of bound.
+If the snippet has defined `snippet-exit-identifier' in the template,
+move the point to that location.  Otherwise, move it to the end of the
+snippet." nil [16479 16785]) ("snippet-next-field" function nil nil ((user-visible . t)) "Move point forward to the next field in the `snippet'.
+If there are no more fields in the snippet, point is moved to the end
+of the snippet or the location specified by `snippet-exit-identifier',
+and the snippet reverts to normal text." nil [16787 17478]) ("snippet-prev-field" function nil nil ((user-visible . t)) "Move point backward to the previous field in the `snippet'.
+If there are no more fields in the snippet, point is moved to the end
+of the snippet or the location specified by `snippet-exit-identifier',
+and the snippet reverts to normal text." nil [17480 18195]) ("snippet-cleanup" function nil nil nil "Delete all overlays associated with `snippet'.
+This effectively reverts the snippet to normal text in the buffer." nil [18197 18538]) ("snippet-field-regexp" function nil nil nil "Return a regexp that is used to search for fields within a template." nil [18540 18993]) ("snippet-split-string" function nil ("string" "&optional" "separators" "include-separators-p") nil "Split STRING into substrings and separators at SEPARATORS.
+Return a list of substrings and optional include the separators in the
+list if INCLUDE-SEPARATORS-P is non-nil." nil [18995 19708]) ("snippet-split-regexp" function nil nil nil "Return a regexp to split the template into component parts." nil [19710 19911]) ("snippet-insert" function nil ("template") ((user-visible . t)) "Insert a snippet into the current buffer at point.  
+TEMPLATE is a string that may optionally contain fields which are
+specified by `snippet-field-identifier'.  Fields may optionally also
+include default values delimited by `snippet-field-default-beg-char'
+and `snippet-field-default-end-char'.
+
+For example, the following template specifies two fields which have
+the default values of \"element\" and \"sequence\":
+
+  \"for $${element} in $${sequence}:\"
+
+In the next example, only one field is specified and no default has
+been provided:
+
+  \"import $$\"
+
+This function may be called interactively, in which case, the TEMPLATE
+is prompted for.  However, users do not typically invoke this function
+interactively, rather it is most often called as part of an abbrev
+expansion.  See `snippet-abbrev' and `snippet-with-abbrev-table' for
+more information." nil [19913 24120]) ("snippet-strip-abbrev-table-suffix" function nil ("str") nil "Strip a suffix of \"-abbrev-table\" if one is present." nil [24122 24317]) ("snippet-make-abbrev-expansion-hook" function nil ("abbrev-table" "abbrev-name" "template") nil "Define a function with the `no-self-insert' property set non-nil.
+The function name is composed of \"snippet-abbrev-\", the abbrev table
+name, and the name of the abbrev.  If the abbrev table name ends in
+\"-abbrev-table\", it is stripped." nil [24319 25319]) ("snippet-abbrev" function nil ("abbrev-table" "abbrev-name" "template") nil "Establish an abbrev for a snippet template.
+Set up an abbreviation called ABBREV-NAME in the ABBREV-TABLE (note
+that ABBREV-TABLE must be quoted) that expands into a snippet using
+the specified TEMPLATE string.
+
+This macro facilitates the creation of a function for the expansion
+hook to be used in `define-abbrev'.  In addition, it also sets the
+`no-self-insert' property on the function to prevent `abbrev-mode'
+from inserting the character that triggered the expansion (typically
+whitespace) which would otherwise interfere with the first field of a
+snippet." nil [25321 26190]) ("snippet-with-abbrev-table" function nil ("abbrev-table" "&rest" "snippet-alist") nil "Establish a set of abbrevs for snippet templates.
+Set up a series of snippet abbreviations in the ABBREV-TABLE (note
+that ABBREV-TABLE must be quoted.  The abbrevs are specified in
+SNIPPET-ALIST.  For example:
+
+  (snippet-with-abbrev-table 'python-mode-abbrev-table
+    (\"for\" . \"for $${element} in $${sequence}:\")
+    (\"im\"  . \"import $$\"))
+
+See also `snippet-abbrev." nil [26192 26844]) ("snippet" package nil nil nil [26846 26864]))
+    :unmatched-syntax 'nil
+    )
+   )
+  )
