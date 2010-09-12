@@ -6,8 +6,32 @@
 (define-key global-map "\C-ca" 'org-agenda)  ; C-c a 进入日程表
 (setq org-log-done 'time)  ; 给已完成事项打上时间戳。可选 note，附加注释
 
-(setq org-agenda-files (list "/media/WinData/project/home/orgEmacs/rails.org"
-                             "/media/WinData/project/home/orgEmacs/tmeeerp.org"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  设置tags
+(setq org-tag-alist (quote (
+                            (:startgroup)
+                            ("comp" . ?c)
+                            ("job" . ?j)
+                            ("life" . ?l)
+                            ("misc" . ?m)
+                            ("project" . ?p)
+                            ("sports" . ?s)
+                            ("tmee" . ?t)
+                            (:endgroup)
+                            ("PHONE" . ?h)
+                            ("COMPUTER" . ?o)
+                            ("INTERNET" . ?i)
+                            ("NEXT" . ?n)
+                            ("WAITING" . ?w))))
+
+(setq org-agenda-files (list "/media/WinData/project/home/orgEmacs/comp.org"
+                             "/media/WinData/project/home/orgEmacs/tmp.org"
+                             "/media/WinData/project/home/orgEmacs/job.org"
+                             "/media/WinData/project/home/orgEmacs/life.org"
+                             "/media/WinData/project/home/orgEmacs/misc.org"
+                             "/media/WinData/project/home/orgEmacs/project.org"
+                             "/media/WinData/project/home/orgEmacs/sports.org"
+                             "/media/WinData/project/home/orgEmacs/tmee.org"))
 
 ;; (setq org-agenda-files (list "E:/project/home/orgEmacs/TMEE_Thit.org"
 ;;                             "E:/project/home/orgEmacs/org.org"
@@ -26,13 +50,35 @@
 ;; org project
 (setq org-publish-project-alist
 '(("org"
-:base-directory "~/org/"
-:publishing-directory "~/org/public_html"
-:section-numbers nil
-:table-of-contents nil
-:style "<link rel=stylesheet
-href=\"../other/mystyle.css\"
-type=\"text/css\">")))
+;;   :base-directory "~/org/"
+   :base-directory "/media/WinData/project/home/orgEmacs/"
+   :base-extension = "org"
+   :publishing-directory "/media/WinData/project/home/orgEmacs/publish/"
+   :publishing-function org-publish-org-to-html
+   :exclude "PrivatePage.org"   ;; regexp
+   :headline-levels 3
+   :section-numbers nil
+   :table-of-contents nil
+   :style "<link rel=stylesheet
+            href=\"../other/mystyle.css\"
+            type=\"text/css\">"
+   :auto-preamble t
+   :auto-postamble nil)
+
+  ("images"
+   :base-directory "~/images/"
+   :base-extension "jpg\\|gif\\|png"
+   :publishing-directory "/ssh:user@host:~/html/images/"
+   :publishing-function org-publish-attachment)
+
+  ("other"
+   :base-directory "~/other/"
+   :base-extension "css\\|el"
+   :publishing-directory "/ssh:user@host:~/html/other/"
+   :publishing-function org-publish-attachment)
+  ("website" :components ("orgfiles" "images" "other"))))
+
+
 ;; open appt message function
 (appt-activate t)
 (setq appt-display-format 'window)

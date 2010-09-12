@@ -66,18 +66,18 @@
 ;;; 保存桌面环境
 (desktop-save-mode 1)
 
-;;; 最大化
-(defun w32-restore-frame ()
-  "Restore a minimized frame"
-  (interactive)
-  (w32-send-sys-command 61728))
-(defun w32-maximize-frame ()
-  "Maximize the current frame"
-  (interactive)
-  ;(w32-send-sys-command 61488)
-  )
-(w32-maximize-frame)
-(add-hook 'after-make-frame-functions 'w32-maximize-frame)
+;; ;;; 最大化
+;; (defun w32-restore-frame ()
+;;   "Restore a minimized frame"
+;;   (interactive)
+;;   (w32-send-sys-command 61728))
+;; (defun w32-maximize-frame ()
+;;   "Maximize the current frame"
+;;   (interactive)
+;;   ;(w32-send-sys-command 61488)
+;;   )
+;; (w32-maximize-frame)
+;; (add-hook 'after-make-frame-functions 'w32-maximize-frame)
 
 
 
@@ -124,3 +124,4 @@
         try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
+

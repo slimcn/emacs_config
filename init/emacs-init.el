@@ -17,11 +17,8 @@
 (setq default-path-init (concat default-path "init/")) ; 配置文件路径
 (setq default-path-package (concat default-path "package/")) ; 插件包文件路径
 
-(load-file (concat default-path-init "_tabbar.el")) ; 标签
 (load-file (concat default-path-init "_base.el")) ; 基本设置
- (load-file (concat default-path-init "_color-theme.el")) ; 配色方案
-
-(load-file (concat default-path-init "_org.el")) ; org-mode 个人信息管理及编写大纲
+(load-file (concat default-path-init "_color-theme.el")) ; 配色方案
 
 (load-file (concat default-path-init "_slimcn.el")) ; slimcn个人设置
 
@@ -46,11 +43,6 @@
   (add-hook 'window-setup-hook 'ecb-redraw-layout t))
 
 (progn
-  (load-file (concat default-path-package "cedet/common/cedet.el")))
-
-(load-file (concat default-path-init "_ecb.el"))
-
-(progn
   (add-to-list 'load-path (concat default-path-package "find-recursive"))
   (require 'find-recursive))
 
@@ -68,11 +60,27 @@
 ;;   (require 'ido) ; 打开文件和切换buffer的智能提示 (智能得有点乱七八糟)
 ;;   (ido-mode t))
 
-(load-file (concat default-path-init "_dtd.el"))
-
-(load-file (concat default-path-init "_ruby.el"))
+;; (progn
+;;   (load-file (concat default-path-package "cedet/common/cedet.el")))
+;;
+;; (load-file (concat default-path-init "_ecb.el"))
+;;
+;; ; (load-file (concat default-path-init "_dtd.el"))
+;;
+(load-file (concat default-path-init "_sgml.el"))
+;; (load-file (concat default-path-init "_ruby.el")) ; tab补全与_ror.el冲突
 (load-file (concat default-path-init "_ror.el"))
+;;
+;; ; (load-file (concat default-path-init "_blog.el"))
+;;
+;; ; (load-file (concat default-path-init "_emms.el"))
 
-(load-file (concat default-path-init "_blog.el"))
+(load-file (concat default-path-init "_org.el")) ; org-mode 个人信息管理及编写大纲
 
-(load-file (concat default-path-init "_emms.el"))
+
+(add-hook 'after-make-frame-functions
+          (lambda (new-frame)
+            (select-frame new-frame)
+            ;; ->在此填界面和字体的配置
+            (load-file (concat default-path-init "_base_gui.el")) ; 只有在图形界面下才支持的配置
+))

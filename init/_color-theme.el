@@ -3,4 +3,5 @@
 (require 'color-theme)
 (color-theme-initialize)
 ;(color-theme-robin-hood)
-(color-theme-blue-sea)
+(color-theme-classic)
+
