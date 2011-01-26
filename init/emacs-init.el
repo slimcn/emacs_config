@@ -9,6 +9,7 @@
 ;   )
 ;  )
 ;
+; (setq default-path "/media/TOOLS/programs/dev/emacs/config/")
 ; (load-file (concat default-path "init/emacs-init.el"))
 ; ;;; end ;;; .emacs setup
 
@@ -60,16 +61,19 @@
 ;;   (require 'ido) ; 打开文件和切换buffer的智能提示 (智能得有点乱七八糟)
 ;;   (ido-mode t))
 
-;; (progn
-;;   (load-file (concat default-path-package "cedet/common/cedet.el")))
-;;
-;; (load-file (concat default-path-init "_ecb.el"))
+ (progn
+   (load-file (concat default-path-package "cedet/common/cedet.el")))
+
+(load-file (concat default-path-init "_ecb.el"))
 ;;
 ;; ; (load-file (concat default-path-init "_dtd.el"))
 ;;
 (load-file (concat default-path-init "_sgml.el"))
 ;; (load-file (concat default-path-init "_ruby.el")) ; tab补全与_ror.el冲突
 (load-file (concat default-path-init "_ror.el"))
+
+;(load (concat default-path-init "_nxhtml.el"))
+
 ;;
 ;; ; (load-file (concat default-path-init "_blog.el"))
 ;;
@@ -77,10 +81,17 @@
 
 (load-file (concat default-path-init "_org.el")) ; org-mode 个人信息管理及编写大纲
 
+;;; start ;;; net work
+(load-file (concat default-path-init "_tramp.el")) ; 远程连接
+;;; end   ;;; net work
 
-(add-hook 'after-make-frame-functions
-          (lambda (new-frame)
-            (select-frame new-frame)
-            ;; ->在此填界面和字体的配置
-            (load-file (concat default-path-init "_base_gui.el")) ; 只有在图形界面下才支持的配置
-))
+
+
+(load-file (concat default-path-init "_base_gui.el"))
+;; ;; 该函数在命令行模式下才需要
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (new-frame)
+;;             (select-frame new-frame)
+;;             ;; ->在此填界面和字体的配置
+;;             (load-file (concat default-path-init "_base_gui.el")) ; 只有在图形界面下才支持的配置
+;; ))

@@ -24,14 +24,14 @@
                             ("NEXT" . ?n)
                             ("WAITING" . ?w))))
 
-(setq org-agenda-files (list "/media/WinData/project/home/orgEmacs/comp.org"
-                             "/media/WinData/project/home/orgEmacs/tmp.org"
-                             "/media/WinData/project/home/orgEmacs/job.org"
-                             "/media/WinData/project/home/orgEmacs/life.org"
-                             "/media/WinData/project/home/orgEmacs/misc.org"
-                             "/media/WinData/project/home/orgEmacs/project.org"
-                             "/media/WinData/project/home/orgEmacs/sports.org"
-                             "/media/WinData/project/home/orgEmacs/tmee.org"))
+(setq org-agenda-files (list "/media/windata/project/home/orgEmacs/comp.org"
+                             "/media/windata/project/home/orgEmacs/tmp.org"
+                             "/media/windata/project/home/orgEmacs/job.org"
+                             "/media/windata/project/home/orgEmacs/life.org"
+                             "/media/windata/project/home/orgEmacs/misc.org"
+                             "/media/windata/project/home/orgEmacs/project.org"
+                             "/media/windata/project/home/orgEmacs/sports.org"
+                             "/media/windata/project/home/orgEmacs/tmee.org"))
 
 ;; (setq org-agenda-files (list "E:/project/home/orgEmacs/TMEE_Thit.org"
 ;;                             "E:/project/home/orgEmacs/org.org"
@@ -51,9 +51,9 @@
 (setq org-publish-project-alist
 '(("org"
 ;;   :base-directory "~/org/"
-   :base-directory "/media/WinData/project/home/orgEmacs/"
+   :base-directory "/media/windata/project/home/orgEmacs/"
    :base-extension = "org"
-   :publishing-directory "/media/WinData/project/home/orgEmacs/publish/"
+   :publishing-directory "/media/windata/project/home/orgEmacs/publish/"
    :publishing-function org-publish-org-to-html
    :exclude "PrivatePage.org"   ;; regexp
    :headline-levels 3
@@ -90,7 +90,7 @@
 (setq appt-display-mode-line t)
 ;;(appt-activate 1)
 (setq appt-msg-countdown-list '(10 0))
-;(org-agenda)
+;;(org-agenda)
 (org-agenda-to-appt)
 
 
