@@ -5,7 +5,8 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 ;;; 关闭工具栏
-(tool-bar-mode)
+(menu-bar-mode 1)
+(tool-bar-mode -1)
 (set-scroll-bar-mode 'right) ;;滚动条设在右侧
 ;(scroll-bar-mode)
 ;;; 显示列号

@@ -18,6 +18,7 @@
 (setq default-path-init (concat default-path "init/")) ; 配置文件路径
 (setq default-path-package (concat default-path "package/")) ; 插件包文件路径
 
+(load-file (concat default-path-init "_lib.el")) ; 自定义的通用函数库
 (load-file (concat default-path-init "_base.el")) ; 基本设置
 (load-file (concat default-path-init "_color-theme.el")) ; 配色方案
 

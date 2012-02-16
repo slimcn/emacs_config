@@ -1,5 +1,5 @@
 
-(load-file (concat default-path-init "_tabbar.el")) ; 标签 命令行模式下不支持
+;(load-file (concat default-path-init "_tabbar.el")) ; 标签 命令行模式下不支持
 
 ;;; fontset from ahei http://emacser.com/torture-emacs.htm
 (defun qiang-make-font-string (font-name font-size)
@@ -49,3 +49,4 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
  '("Consolas" "Monaco" "DejaVu Sans Mono" "Monospace" "Courier New") ":pixelsize=18"
  '("Microsoft Yahei" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
 ;;; fontset from ahei http://emacser.com/torture-emacs.htm
+

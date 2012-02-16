@@ -1,3 +1,15 @@
+;; (setq org-home-pre-path "/media/data/home/")
+;; (setq org-home-self-file-list (mapcar '(lambda (x)
+;;                                          (concat  "self/ft" x))
+;;                                       '(list "fantong_note.org")))
+
+(setq org-file-regu ".*\.org$")
+(setq org-agenda-list-self (append ;(dir-files "/media/data/home/self/ft" org-file-regu)
+                                   (dir-files "/media/data/home/self/tmee" ".*\.org"))) ; home/self中的org文件
+(setq org-agenda-list-pub (dir-files "/media/data/home/public" ".*\.org")) ; home/public中的org文件
+(setq org-agenda-list-project (list "")) ; 各project中的org文件
+(setq org-agenda-files-old (dir-files "/media/windata/project/home/orgEmacs" ".*\.org")) ; 以前的org文件
+
 ;(require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
@@ -24,14 +36,10 @@
                             ("NEXT" . ?n)
                             ("WAITING" . ?w))))
 
-(setq org-agenda-files (list "/media/windata/project/home/orgEmacs/comp.org"
-                             "/media/windata/project/home/orgEmacs/tmp.org"
-                             "/media/windata/project/home/orgEmacs/job.org"
-                             "/media/windata/project/home/orgEmacs/life.org"
-                             "/media/windata/project/home/orgEmacs/misc.org"
-                             "/media/windata/project/home/orgEmacs/project.org"
-                             "/media/windata/project/home/orgEmacs/sports.org"
-                             "/media/windata/project/home/orgEmacs/tmee.org"))
+(setq org-agenda-files (append org-agenda-files-old
+                               org-agenda-list-self
+                               org-agenda-list-pub
+                               org-agenda-list-project))
 
 ;; (setq org-agenda-files (list "E:/project/home/orgEmacs/TMEE_Thit.org"
 ;;                             "E:/project/home/orgEmacs/org.org"
