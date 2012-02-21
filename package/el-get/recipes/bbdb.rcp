@@ -1,0 +1,12 @@
+(:name bbdb
+       :website "http://bbdb.sourceforge.net/"
+       :description "The Insidious Big Brother Database (BBDB) is a contact management utility."
+       :type git
+       :url "git://git.savannah.nongnu.org/bbdb.git"
+       :load-path ("./lisp")
+       ;; if using vm, add `--with-vm-dir=DIR' after ./configure
+       :build `("autoconf" ,(concat "./configure --with-emacs=" el-get-emacs) "make bbdb")
+       :features bbdb-loaddefs
+       :autoloads nil
+       :post-init (lambda () (bbdb-initialize)))
+

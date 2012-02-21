@@ -1,0 +1,19 @@
+(:name pymacs
+       :description "Interface between Emacs Lisp and Python"
+       :type git
+       :url "http://github.com/pinard/Pymacs.git"
+       :post-init
+       (lambda ()
+         ;; do PYTHONPATH=~/.emacs.d/el-get/pymacs/:$PYTHONPATH
+         (setenv
+          "PYTHONPATH"
+          (let ((pp (getenv "PYTHONPATH")))
+            (concat default-directory
+                    (unless (string-prefix-p ":" pp) ":")
+                    pp)))
+         (autoload 'pymacs-load "pymacs" nil t)
+         (autoload 'pymacs-eval "pymacs" nil t)
+         (autoload 'pymacs-exec "pymacs" nil t)
+         (autoload 'pymacs-call "pymacs")
+         (autoload 'pymacs-apply "pymacs"))
+       :build ("make"))
