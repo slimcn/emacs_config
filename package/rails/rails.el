@@ -35,8 +35,8 @@
 
 (eval-when-compile
   (require 'speedbar)
-  (require 'inf-ruby)
-  (require 'ruby-mode)
+;  (require 'inf-ruby)
+;  (require 'ruby-mode)
   (require 'ruby-electric))
 
 (require 'sql)

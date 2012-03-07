@@ -24,10 +24,17 @@
 (load-file (concat default-path-init "_slimcn.el")) ; slimcn个人设置
 
 (load-file (concat default-path-init "_elpa.el")) ; 包设定
+(load-file (concat default-path-init "_org.el")) ; org config
 
 ;; elpa version 24 is not very support
 (load-file (concat default-path-init "_base.el")) ; 基本设置
 (load-file (concat default-path-init "_ror.el")) ; 基本设置
+;(add-to-list 'load-path (concat default-path-package "rhtml"))
+;(require 'rhtml-mode)
+;(add-hook 'rhtml-mode-hook
+;         (lambda () (rinari-launch)))
+
+(load-file (concat default-path-init "_org.el")) ; org config
 
 
 

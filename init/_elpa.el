@@ -10,9 +10,7 @@
 (require 'el-get)
 
 ;;; package set
-(load-file (concat default-path-init "_ror24.el"))
+;(load-file (concat default-path-init "_ror24.el"))
 
 ;;;
 (el-get 'sync)
-
-
